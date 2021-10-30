@@ -1,0 +1,14 @@
+K8sAllowedRepos: []
+
+K8sBlockNpLb: []
+
+K8sCapsOnReplica: []
+
+K8sDisableHostNetworking: []
+
+K8sPodPriority: []
+
+K8sRequiredProbes: []
+
+K8sRunAsNonRoot: []
+

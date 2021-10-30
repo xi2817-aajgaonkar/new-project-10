@@ -1,0 +1,109 @@
+{
+    "K8sAllowedRepos": {
+        "section": "Parameters",
+        "sectionDec": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices ",
+        "expand": true,
+        "type": "input_block",
+        "id": "params",
+        "fields": [
+            {
+                "component": "multiInput",
+                "label": "Allowed Repos",
+                "type": "select",
+                "defaultValue": [],
+                "id": "repos",
+                "hint": "add allowed repos here",
+                "store": "params.repos"
+            }
+        ]
+    },
+    "K8sCapsOnReplica": {
+        "section": "Parameters",
+        "sectionDec": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices ",
+        "expand": true,
+        "type": "input_block",
+        "id": "params",
+        "fields": [
+            {
+                "component": "field_group",
+                "header": "",
+                "id": "parameters",
+                "fields": [
+                    {
+                        "component": "input",
+                        "label": "Min Replicas",
+                        "type": "number",
+                        "defaultValue": 3,
+                        "id": "minReplicas",
+                        "hint": "add min replicas here",
+                        "store": "params.minReplicas"
+                    },
+                    {
+                        "component": "input",
+                        "label": "Max Replicas",
+                        "type": "number",
+                        "defaultValue": 4,
+                        "id": "maxReplicas",
+                        "hint": "add max replicas here",
+                        "store": "params.maxReplicas"
+                    }
+                ]
+            }
+        ]
+    },
+    "K8sRequiredProbes": {
+        "section": "Parameters",
+        "sectionDec": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices ",
+        "expand": true,
+        "type": "input_block",
+        "id": "params",
+        "fields": [
+            {
+                "component": "multiSelect",
+                "label": "Probes",
+                "type": "select",
+                "defaultValue": [],
+                "id": "probes",
+                "hint": "select probes here",
+                "store": "params.probes",
+                "options": [
+                    {
+                        "value": "readinessProbe",
+                        "label": "Readiness Probe"
+                    },
+                    {
+                        "value": "livenessProbe",
+                        "label": "Liveness Probe"
+                    },
+                    {
+                        "value": "startupProbe",
+                        "label": "Startup Probe"
+                    }
+                ]
+            },
+            {
+                "component": "multiSelect",
+                "label": "Probe Type",
+                "type": "select",
+                "defaultValue": [],
+                "id": "probesTypes",
+                "hint": "select probes type here",
+                "store": "params.probesTypes",
+                "options": [
+                    {
+                        "value": "tcpSocket",
+                        "label": "TCP Socket"
+                    },
+                    {
+                        "value": "httpGet",
+                        "label": "HTTP Get"
+                    },
+                    {
+                        "value": "exec",
+                        "label": "Exec"
+                    }
+                ]
+            }
+        ]
+    }
+}

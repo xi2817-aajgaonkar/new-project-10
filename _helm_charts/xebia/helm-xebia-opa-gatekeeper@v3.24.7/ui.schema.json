@@ -1,0 +1,247 @@
+{
+    "vars": [
+        {
+            "section": "Basic Detail",
+            "sectionDec": "Basic Details",
+            "expand": true,
+            "type": "input_block",
+            "id": "basic_Detail",
+            "fields": [
+                {
+                    "component": "input",
+                    "label": "Namespace",
+                    "type": "text",
+                    "defaultValue": "gatekeeper-system",
+                    "id": "namespace",
+                    "hint": "add namespace",
+                    "store": "gatekeeper.namespace"
+                },
+                {
+                    "component": "input",
+                    "label": "Replicas",
+                    "type": "number",
+                    "defaultValue": 3,
+                    "id": "replicas",
+                    "hint": "add replicas",
+                    "store": "gatekeeper.replicas"
+                },
+                {
+                    "component": "singleSelect",
+                    "label": "Log Level",
+                    "type": "select",
+                    "defaultValue": "INFO",
+                    "id": "loglevel",
+                    "hint": "select loglevel",
+                    "store": "gatekeeper.loglevel",
+                    "options": [
+                        {
+                            "value": "INFO",
+                            "label": "INFO"
+                        }
+                    ]
+                },
+                {
+                    "component": "object_group",
+                    "header": "Pod Annotations",
+                    "id": "podAnnotations",
+                    "store": "gatekeeper.podAnnotations",
+                    "defaultValue": {
+                        "container.seccomp.security.alpha.kubernetes.io/manager": "runtime/default"
+                    },
+                    "fields": {
+                        "key": {
+                            "component": "input",
+                            "label": "Key",
+                            "type": "text",
+                            "defaultValue": "",
+                            "id": "annotation_key",
+                            "hint": "add key here",
+                            "store": "key"
+                        },
+                        "value": {
+                            "component": "input",
+                            "label": "value",
+                            "type": "text",
+                            "defaultValue": "",
+                            "id": "annotation_value",
+                            "hint": "add value here",
+                            "store": "value"
+                        }
+                    }
+                },
+                {
+                    "component": "object_group",
+                    "header": "Pod Labels",
+                    "id": "podLabels",
+                    "store": "gatekeeper.podLabels",
+                    "defaultValue": {},
+                    "fields": {
+                        "key": {
+                            "component": "input",
+                            "label": "Key",
+                            "type": "text",
+                            "defaultValue": "",
+                            "id": "pod_label_key",
+                            "hint": "add key here",
+                            "store": "key"
+                        },
+                        "value": {
+                            "component": "input",
+                            "label": "value",
+                            "type": "text",
+                            "defaultValue": "",
+                            "id": "pod_label_value",
+                            "hint": "add value here",
+                            "store": "value"
+                        }
+                    }
+                },
+                {
+                    "component": "input",
+                    "label": "Pod Count Limit",
+                    "type": "number",
+                    "defaultValue": 100,
+                    "id": "podCountLimit",
+                    "hint": "add podCountLimit",
+                    "store": "gatekeeper.podCountLimit"
+                },
+                {
+                    "component": "toggle",
+                    "label": "Emit Admission Events",
+                    "type": "button",
+                    "defaultValue": false,
+                    "id": "gatekeeper.emitAdmissionEvents",
+                    "hint": "Want to enable admission events",
+                    "store": "gatekeeper.emitAdmissionEvents",
+                    "option": [
+                        {
+                            "name": "False",
+                            "value": false
+                        },
+                        {
+                            "name": "True",
+                            "value": true
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "section": "Gatekeeper Config",
+            "sectionDec": "Gatekeeper Config",
+            "expand": false,
+            "type": "input_block",
+            "id": "controller_config",
+            "fields": [
+                {
+                    "component": "field_group",
+                    "header": "Image",
+                    "id": "gatekeeper-image",
+                    "fields": [
+                        {
+                            "component": "input",
+                            "label": "Image Repository",
+                            "type": "text",
+                            "defaultValue": "openpolicyagent/gatekeeper",
+                            "id": "repository",
+                            "hint": "add repository",
+                            "store": "gatekeeper.image.repository"
+                        },
+                        {
+                            "component": "input",
+                            "label": "Image Tag",
+                            "type": "text",
+                            "defaultValue": "v3.5.1",
+                            "id": "tag",
+                            "hint": "add tag",
+                            "store": "gatekeeper.image.tag"
+                        }
+                    ]
+                },
+                {
+                    "component": "singleSelect",
+                    "label": "Pull Policy",
+                    "type": "select",
+                    "defaultValue": "IfNotPresent",
+                    "id": "pullPolicy",
+                    "hint": "select pull policy",
+                    "store": "gatekeeper.image.pullPolicy",
+                    "options": [
+                        {
+                            "value": "IfNotPresent",
+                            "label": "IfNotPresent"
+                        }
+                    ]
+                },
+                {
+                    "component": "multiInput",
+                    "label": "Pull Secrets",
+                    "type": "select",
+                    "defaultValue": [],
+                    "id": "pull_secrets",
+                    "hint": "add pull secrets",
+                    "store": "gatekeeper.image.pullSecrets"
+                }
+            ]
+        },
+        {
+            "section": "Resources",
+            "sectionDec": "Resources",
+            "expand": false,
+            "type": "input_block",
+            "id": "resources",
+            "fields": [
+                {
+                    "component": "field_group",
+                    "header": "Resource Request",
+                    "id": "request",
+                    "fields": [
+                        {
+                            "component": "input",
+                            "label": "Resource CPU Request",
+                            "type": "text",
+                            "defaultValue": "100m",
+                            "id": "resources_request_cpu",
+                            "hint": "cpu request",
+                            "store": "gatekeeper.controllerManager.resources.requests.cpu"
+                        },
+                        {
+                            "component": "input",
+                            "label": "Resource Memory Request",
+                            "type": "text",
+                            "defaultValue": "256Mi",
+                            "id": "resources_request_memory",
+                            "hint": "memory request",
+                            "store": "gatekeeper.controllerManager.resources.requests.memory"
+                        }
+                    ]
+                },
+                {
+                    "component": "field_group",
+                    "header": "Resource Limits",
+                    "id": "limits",
+                    "fields": [
+                        {
+                            "component": "input",
+                            "label": "Resource CPU Limts",
+                            "type": "text",
+                            "defaultValue": "1000m",
+                            "id": "resources_limits_cpu",
+                            "hint": "cpu limits",
+                            "store": "gatekeeper.controllerManager.resources.limits.cpu"
+                        },
+                        {
+                            "component": "input",
+                            "label": "Resource Memory Limits",
+                            "type": "text",
+                            "defaultValue": "512Mi",
+                            "id": "resources_limits_memory",
+                            "hint": "add resource name here",
+                            "store": "gatekeeper.controllerManager.resources.limits.memory"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

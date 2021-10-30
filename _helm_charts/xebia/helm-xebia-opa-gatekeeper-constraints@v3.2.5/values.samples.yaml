@@ -1,0 +1,82 @@
+K8sAllowedRepos:
+  - name: repo-is-openpolicyagent
+    severity: high
+    params:
+      repos:
+        - gcr.io/xebia
+    enforcementAction: deny
+    filters:
+      labels: 
+        app : nginx
+      namespaces: ["default"]
+      excludedNamespaces: ["kube-system", "kube-public", "kube-node-lease", "gatekeeper-system"]
+
+K8sBlockNpLb:
+  - name: block-node-port
+    severity: high
+    enforcementAction: deny
+    params: {}
+    filters:
+      labels: 
+        app : nginx
+      namespaces: ["default"]
+      excludedNamespaces: ["kube-system", "kube-public", "kube-node-lease", "gatekeeper-system"]
+
+K8sCapsOnReplica:
+  - name: must-have-caps
+    severity: high
+    enforcementAction: deny
+    params: 
+      minReplicas: 1
+      maxReplicas: 10
+    filters:
+      labels: 
+        app : nginx
+      namespaces: ["default"]
+      excludedNamespaces: ["kube-system", "kube-public", "kube-node-lease", "gatekeeper-system"]
+
+K8sDisableHostNetworking:
+  - name: pods-should-not-have-host-network
+    severity: high
+    enforcementAction: deny
+    params: {}
+    filters:
+      labels: 
+        app : nginx
+      namespaces: ["default"]
+      excludedNamespaces: ["kube-system", "kube-public", "kube-node-lease", "gatekeeper-system"]
+
+K8sPodPriority:
+  - name: pod-must-have-priority
+    severity: high
+    enforcementAction: deny
+    params: {}
+    filters:
+      labels: 
+        app : nginx
+      namespaces: ["default"]
+      excludedNamespaces: ["kube-system", "kube-public", "kube-node-lease", "gatekeeper-system"]
+
+K8sRequiredProbes:
+  - name: must-have-probes
+    severity: high
+    enforcementAction: deny
+    params: 
+      probes: ["readinessProbe", "livenessProbe", "startupProbe"]
+      probeTypes: ["tcpSocket", "httpGet", "exec"]
+    filters:
+      labels: 
+        app : nginx
+      namespaces: ["default"]
+      excludedNamespaces: ["kube-system", "kube-public", "kube-node-lease", "gatekeeper-system"]
+
+K8sRunAsNonRoot:
+  - name: container-must-run-as-non-root
+    severity: high
+    enforcementAction: deny
+    params: {}
+    filters:
+      labels: 
+        app : nginx
+      namespaces: ["default"]
+      excludedNamespaces: ["kube-system", "kube-public", "kube-node-lease", "gatekeeper-system"]

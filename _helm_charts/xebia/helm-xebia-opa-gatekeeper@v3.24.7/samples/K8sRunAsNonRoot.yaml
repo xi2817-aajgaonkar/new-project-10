@@ -1,0 +1,14 @@
+apiVersion: constraints.gatekeeper.sh/v1beta1
+kind: K8sRunAsNonRoot
+metadata:
+  name: container-must-run-as-non-root
+spec:
+  match:
+    kinds:
+      - apiGroups: ["apps"]
+        kinds: ["Deployment", "StatefulSet"]
+      - apiGroups: [""]
+        kinds: ["Pod"]
+    labelSelector:
+      matchLabels: 
+        app: nginx
