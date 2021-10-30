@@ -1,0 +1,7 @@
+apiVersion: v0.1.0
+module:
+  module: git@github.com:xebiaww-apps/helm-xebia-opa-gatekeeper.git
+  ref:
+    branch: v3.24.7
+name: xebia-opa-gatekeeper-templates
+vars: {}
