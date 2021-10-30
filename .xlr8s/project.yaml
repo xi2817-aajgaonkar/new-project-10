@@ -4,6 +4,8 @@ envs:
   path: .xlr8s/envs/dev/env.yaml
 - name: dev1
   path: .xlr8s/envs/dev1/env.yaml
+- name: dv1
+  path: .xlr8s/envs/dv1/env.yaml
 git: null
 modules:
   k8stools:
